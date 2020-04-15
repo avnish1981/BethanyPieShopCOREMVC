@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BethanyPieShop.Services;
+using BethanyPieShop.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BethanyPieShop.Controllers
@@ -17,10 +18,15 @@ namespace BethanyPieShop.Controllers
             this._pieData = pieData;
             this._categoryData = categoryData;
         }
-        public ViewResult List()
+        public ViewResult   List()
         {
-            var model = _pieData.AllPie;
-            return View(model);
+            /*  ViewBag.Currentcategory = "Cheese cake";
+              var model = _pieData.AllPie;
+              return View(model); */
+            PiesListViewModel piesListView = new PiesListViewModel();
+            piesListView.Pies = _pieData.AllPie;
+            piesListView.Currency = "INR";
+            return View(piesListView);
         }
     }
 }
