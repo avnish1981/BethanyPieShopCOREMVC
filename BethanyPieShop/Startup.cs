@@ -24,7 +24,7 @@ namespace BethanyPieShop
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<AppDbContext>(options =>
+            services.AddDbContextPool<AppDbContext>(options =>
             options.UseSqlServer(_config.GetConnectionString("DefaultConnection")));
             services.AddScoped<ICategoryData, SqlCategoryData>();
             services.AddScoped<IPieData, SqlPieData>();
