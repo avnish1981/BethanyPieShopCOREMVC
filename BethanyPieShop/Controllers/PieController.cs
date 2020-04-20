@@ -28,5 +28,14 @@ namespace BethanyPieShop.Controllers
             piesListView.Currency = "INR";
             return View(piesListView);
         }
+        public IActionResult Details(int id)
+        {
+            var pie = _pieData.GetPieById(id);
+            if(pie ==null)
+            {
+                return View("NotFound");
+            }
+            return View(pie);
+        }
     }
 }

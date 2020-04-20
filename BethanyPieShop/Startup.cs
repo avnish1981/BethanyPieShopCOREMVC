@@ -48,7 +48,7 @@ namespace BethanyPieShop
             app.UseStaticFiles();// This middle ware allow us to server static files and javascripts  and CSS files and so on.
             app.UseAuthentication();
             app.UseMvcWithDefaultRoute(); //This middleware basically enable the MVC behaviour .
-            
+            app.UseMvc();
             //app.Run(async (context) =>
             //{
             //    await context.Response.WriteAsync("Hello World!");
