@@ -7,6 +7,7 @@ using BethanyPieShop.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -24,8 +25,9 @@ namespace BethanyPieShop
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContextPool<AppDbContext>(options =>
+            services.AddDbContextPool<AppBethyDbContext>(options =>
             options.UseSqlServer(_config.GetConnectionString("DefaultConnection")));
+            services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<AppBethyDbContext>();
             services.AddScoped<ICategoryData, SqlCategoryData>();
             services.AddScoped<IPieData, SqlPieData>();
             //services.AddScoped<IPieData, ClsMockPieRepository>(); // This will create new object based upon per http request and it will alive as oon as request is active .

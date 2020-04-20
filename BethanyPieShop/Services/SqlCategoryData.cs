@@ -9,9 +9,9 @@ namespace BethanyPieShop.Services
 {
     public class SqlCategoryData:ICategoryData 
     {
-        private readonly AppDbContext _appDb;
+        private readonly AppBethyDbContext _appDb;
 
-        public SqlCategoryData(AppDbContext appDb )
+        public SqlCategoryData(AppBethyDbContext appDb )
         {
             _appDb = appDb;
            

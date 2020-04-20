@@ -10,9 +10,9 @@ namespace BethanyPieShop.Services
 {
     public class SqlPieData : IPieData
     {
-        private readonly AppDbContext _appDb;
+        private readonly AppBethyDbContext _appDb;
 
-        public SqlPieData(AppDbContext appDb)
+        public SqlPieData(AppBethyDbContext appDb)
         {
             this._appDb = appDb;
         }

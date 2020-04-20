@@ -16,6 +16,9 @@
                 <div>
                     @Html.ActionLink("Pie", "List", "Pie")
                 </div>
+                <div>
+                   <partial name="_LoginPartial"/>
+                </div>
                 <p class="lead">
                     <img class="img-responsive" alt="Bethany's Pie Shop'" src="~/Images/bethanylogo.png" />
                 </p>
@@ -25,6 +28,6 @@
             </div>
         </div>
     </div>
-   
+   @RenderSection("Scripts",required:false )
 </body>
 </html>
