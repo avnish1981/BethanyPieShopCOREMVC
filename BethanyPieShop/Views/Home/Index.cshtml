@@ -1,9 +1,18 @@
-﻿
+﻿@model HomeViewModel
 @{
     ViewData["Title"] = "Index";
 }
 
 <h2>Index</h2>
 <h3>@ViewBag.Enviorment</h3>
+<div>
+    @foreach (var item in Model.PiesOftheweek)
+    {
+        <partial name="_Carousel" />
+    }
+
+
+</div>
+
 
 
