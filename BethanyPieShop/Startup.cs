@@ -46,6 +46,7 @@ namespace BethanyPieShop
             }
             app.UseHttpsRedirection(); //If we want to run our application on https we need to configute usehttps middle ware .
             app.UseStaticFiles();// This middle ware allow us to server static files and javascripts  and CSS files and so on.
+            app.UseAuthentication();
             app.UseMvcWithDefaultRoute(); //This middleware basically enable the MVC behaviour .
             
             //app.Run(async (context) =>
