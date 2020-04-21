@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using BethanyPieShop.Models;
 using BethanyPieShop.Services;
 using BethanyPieShop.ViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 
@@ -20,6 +21,7 @@ namespace BethanyPieShop.Controllers
             this._config = config;
             this._pieData = pieData;
         }
+        [Authorize]
         public IActionResult Index()
         {
             var pieData = new HomeViewModel

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BethanyPieShop.Services;
 using BethanyPieShop.ViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BethanyPieShop.Controllers
@@ -18,6 +19,7 @@ namespace BethanyPieShop.Controllers
             this._pieData = pieData;
             this._categoryData = categoryData;
         }
+        [Authorize]
         public ViewResult   List()
         {
             /*  ViewBag.Currentcategory = "Cheese cake";
@@ -28,6 +30,7 @@ namespace BethanyPieShop.Controllers
             piesListView.Currency = "INR";
             return View(piesListView);
         }
+        [Authorize]
         public IActionResult Details(int id)
         {
             var pie = _pieData.GetPieById(id);
