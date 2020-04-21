@@ -30,6 +30,9 @@ namespace BethanyPieShop
             services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<AppBethyDbContext>();
             services.AddScoped<ICategoryData, SqlCategoryData>();
             services.AddScoped<IPieData, SqlPieData>();
+            services.AddScoped<ShoppingCart>(s=>ShoppingCart.GetCart(s));
+            services.AddHttpContextAccessor();
+            services.AddSession();
             //services.AddScoped<IPieData, ClsMockPieRepository>(); // This will create new object based upon per http request and it will alive as oon as request is active .
             //services.AddScoped<ICategoryData, ClsMockCategoryRepository>();
             //services.AddSingleton() -  basically this will create single instance of the object throught the Application and resuse  the singelton instance.
@@ -47,6 +50,7 @@ namespace BethanyPieShop
             app.UseHttpsRedirection(); //If we want to run our application on https we need to configute usehttps middle ware .
             app.UseStaticFiles();// This middle ware allow us to server static files and javascripts  and CSS files and so on.
             app.UseAuthentication();
+            app.UseSession();
             app.UseMvcWithDefaultRoute(); //This middleware basically enable the MVC behaviour .
 
             //This below Route Section will enable Routeing patten to the MVC 
