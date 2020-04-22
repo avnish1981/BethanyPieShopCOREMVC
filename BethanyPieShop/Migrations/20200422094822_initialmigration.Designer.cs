@@ -4,14 +4,16 @@ using BethanyPieShop.EntityFramework;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BethanyPieShop.Migrations
 {
     [DbContext(typeof(AppBethyDbContext))]
-    partial class AppBethyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200422094822_initialmigration")]
+    partial class initialmigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -38,25 +40,6 @@ namespace BethanyPieShop.Migrations
                         new { CategoryId = 2, CategoryName = "Cheese cakes" },
                         new { CategoryId = 3, CategoryName = "Seasonal pies" }
                     );
-                });
-
-            modelBuilder.Entity("BethanyPieShop.Models.Feedback", b =>
-                {
-                    b.Property<int>("FeedbackId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<bool>("ContactMe");
-
-                    b.Property<string>("Email");
-
-                    b.Property<string>("Message");
-
-                    b.Property<string>("Name");
-
-                    b.HasKey("FeedbackId");
-
-                    b.ToTable("Feedbacks");
                 });
 
             modelBuilder.Entity("BethanyPieShop.Models.Pie", b =>

@@ -31,6 +31,7 @@ namespace BethanyPieShop
             services.AddScoped<ICategoryData, SqlCategoryData>();
             services.AddScoped<IPieData, SqlPieData>();
             services.AddScoped<ShoppingCart>(s=>ShoppingCart.GetCart(s));
+            services.AddScoped<IFeedbackData, SqlFeedbackData>();
             services.AddHttpContextAccessor();
             services.AddSession();
             //services.AddScoped<IPieData, ClsMockPieRepository>(); // This will create new object based upon per http request and it will alive as oon as request is active .
