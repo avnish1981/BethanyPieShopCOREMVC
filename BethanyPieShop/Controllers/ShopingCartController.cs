@@ -8,12 +8,12 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BethanyPieShop.Controllers
 {
-    public class ShopingCartController : Controller
+    public class ShoppingCartController : Controller
     {
         private readonly IPieData _pieData ;
         private readonly ShoppingCart _shoppingCart;
 
-        public ShopingCartController(IPieData pieData , ShoppingCart shoppingCart)
+        public ShoppingCartController(IPieData pieData , ShoppingCart shoppingCart)
         {
             _pieData = pieData;
             _shoppingCart = shoppingCart;
@@ -33,9 +33,9 @@ namespace BethanyPieShop.Controllers
             return View(shoppingCartViewModel);
         }
 
-        public RedirectToActionResult AddToShoppingCart(int pieId)
+        public RedirectToActionResult AddToShoppingCart(int id)
         {
-            var selectedPie = _pieData.AllPie.FirstOrDefault(p => p.PieId == pieId);
+            var selectedPie = _pieData.AllPie.FirstOrDefault(p => p.PieId == id);
 
             if (selectedPie != null)
             {
@@ -44,9 +44,9 @@ namespace BethanyPieShop.Controllers
             return RedirectToAction("Index");
         }
 
-        public RedirectToActionResult RemoveFromShoppingCart(int pieId)
+        public RedirectToActionResult RemoveFromShoppingCart(int id)
         {
-            var selectedPie = _pieData.AllPie.FirstOrDefault(p => p.PieId == pieId);
+            var selectedPie = _pieData.AllPie.FirstOrDefault(p => p.PieId == id);
 
             if (selectedPie != null)
             {

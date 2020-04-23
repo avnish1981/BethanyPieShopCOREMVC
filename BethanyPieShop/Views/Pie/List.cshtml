@@ -1,5 +1,5 @@
 ﻿@*@model IEnumerable<BethanyPieShop.Models.Pie>*@
-@model PiesListViewModel
+@*@model PiesListViewModel*@
 
 @{
     ViewData["Title"] = "Pie List";
@@ -9,10 +9,12 @@
 @*<h3>@ViewBag.Currentcategory </h3>*@
 <h3>@Model.Currency  </h3>
 
-@foreach (var pie in Model.Pies)
-{
-<partial name="_PieCard" model="pie" />
-}
+    @foreach (var pie in @Model.Pies)
+    {
+        <partial name="_PieCard" model="pie" />
+
+    }
+
 
 
 

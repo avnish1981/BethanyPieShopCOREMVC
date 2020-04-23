@@ -18,6 +18,7 @@ namespace BethanyPieShop.Services
         public void AddFeedback(Feedback feedbackData)
         {
             _dbContext.Feedbacks.Add(feedbackData);
+            _dbContext.SaveChanges();
         }
     }
 }

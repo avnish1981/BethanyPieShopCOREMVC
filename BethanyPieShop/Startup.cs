@@ -27,11 +27,12 @@ namespace BethanyPieShop
         {
             services.AddDbContextPool<AppBethyDbContext>(options =>
             options.UseSqlServer(_config.GetConnectionString("DefaultConnection")));
+            // services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<AppBethyDbContext>();
             services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<AppBethyDbContext>();
+            services.AddScoped<IFeedbackData, SqlFeedbackData>();
             services.AddScoped<ICategoryData, SqlCategoryData>();
             services.AddScoped<IPieData, SqlPieData>();
-            services.AddScoped<ShoppingCart>(s=>ShoppingCart.GetCart(s));
-            services.AddScoped<IFeedbackData, SqlFeedbackData>();
+            services.AddScoped<ShoppingCart>(sp=>ShoppingCart.GetCart(sp));
             services.AddHttpContextAccessor();
             services.AddSession();
             //services.AddScoped<IPieData, ClsMockPieRepository>(); // This will create new object based upon per http request and it will alive as oon as request is active .
@@ -50,19 +51,21 @@ namespace BethanyPieShop
             }
             app.UseHttpsRedirection(); //If we want to run our application on https we need to configute usehttps middle ware .
             app.UseStaticFiles();// This middle ware allow us to server static files and javascripts  and CSS files and so on.
-            app.UseAuthentication();
             app.UseSession();
-            app.UseMvcWithDefaultRoute(); //This middleware basically enable the MVC behaviour .
+            app.UseAuthentication();
+            
+           
+           // app.UseMvcWithDefaultRoute(); //This middleware basically enable the MVC behaviour .
 
             //This below Route Section will enable Routeing patten to the MVC 
-            //app.UseMvc(configRoute =>
-            //{
-            //    configRoute.MapRoute(
-            //        name: "default",
-            //        template: "{controller=Home}/{action=Index}/{id?}");
+            app.UseMvc(configRoute =>
+            {
+                configRoute.MapRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}");
 
-
-            //});
+                
+            });
 
 
 

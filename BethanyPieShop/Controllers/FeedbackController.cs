@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BethanyPieShop.Models;
 using BethanyPieShop.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BethanyPieShop.Controllers
@@ -24,8 +25,10 @@ namespace BethanyPieShop.Controllers
         { 
            return View();
         }
+        
         [HttpPost]
         [ValidateAntiForgeryToken ]
+        [Authorize]
         public IActionResult Index(Feedback feedback )
         {
             _feedbackData.AddFeedback(feedback);
