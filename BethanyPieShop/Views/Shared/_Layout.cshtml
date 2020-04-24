@@ -29,6 +29,8 @@
                         <li><a asp-controller="Pie" asp-action="List">Pie</a></li>
                         <li><a asp-controller="Feedback" asp-action="Index">Feedback</a></li>
                         <partial name="_LoginPartial" />
+                        @*@await Component.InvokeAsync("CategoryMenu")*@
+                        @await Component.InvokeAsync("ShoppingCartSummary")
                     </ul>
                 </div>
             </div>

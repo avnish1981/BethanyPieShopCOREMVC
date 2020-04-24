@@ -28,7 +28,6 @@ namespace BethanyPieShop.Controllers
         
         [HttpPost]
         [ValidateAntiForgeryToken ]
-        [Authorize]
         public IActionResult Index(Feedback feedback )
         {
             _feedbackData.AddFeedback(feedback);
